@@ -1,0 +1,138 @@
+查找相关的 二分，hash
+
+
+
+#### 二叉树前中后序非递归遍历
+
+```java
+    if(root==null)return num;
+    前序加中序
+    do{
+        if(root!=null){
+            num[0][p1++]=root.val;
+            Q1.add(root);
+            root=root.left;
+        }
+        else{
+            TreeNode res =Q1.removeLast();
+            
+            num[1][p2++]=res.val;
+            root =res.right;
+        }
+    }while(!Q1.isEmpty()||root!=null);
+    
+    root=root2;
+    后序
+    do{
+        if(root!=null){
+            Q1.add(root);
+            root=root.left;
+        }
+        else{
+            TreeNode res =Q1.peekLast();
+            if(res.right==pre||res.right==null){
+                pre=res;
+                num[2]=res.val;
+                Q1.removeLast();
+            }
+           else{
+               root=res.right;
+             }
+        }
+    }while(!Q1.isEmpty()||root!=null);
+    return num;
+}
+```
+
+
+
+#### 快排划分区域代码
+
+```java
+public int patition(int [] num ,int flag,int low,int high){
+    while(low<high){
+        while(low<high&&flag>=num[high])high--;
+        num[low]=num[high];
+        while(low<high&flag<=num[low])low++;
+        num[high]=num[low];
+    }
+    num[high]=flag;
+    return high;
+}
+```
+
+
+
+#### 子数组的动态递归
+
+* 套路一：子数组必须以 i 位置结尾时的答案是啥；
+  如果每个位置都能结算一个答案，最终的答案必是其中的max。
+
+
+
+#### 最长递增子序列（长度&子序列）
+
+* 动态规划+二分查找
+
+* tail保存长度为res的递增子序列的结尾的值,res从0开始
+
+* num数组从头遍历，res指向tail的末尾
+
+  * 若大于当前tail数组的末尾的值，则res+1,并把num[i]放tail末尾
+
+  * 若小于tail末尾，则找到以一个大于num[i]的tail,并赋值给这个tail
+
+* 若想求最长的子序列是多少，还需要一个maxlen数组，存每个以每个num[i]结尾的最长递增子序列长度
+
+```java
+import java.util.*;
+
+
+public class Solution {
+    /**
+     * retrun the longest increasing subsequence
+     * @param arr int整型一维数组 the array
+     * @return int整型一维数组
+     */
+    public int[] LIS (int[] arr) {
+        int [] tail =new int[arr.length];
+        int [] maxLen =new int [arr.length];
+        int len=tail.length;
+        int res=0;
+        if(arr.length==0) return tail;
+        tail[0]=arr[0];
+        maxLen[0]=1;
+        for(int i=1;i<len;i++){
+           if(arr[i]>tail[res]){
+               tail[res+1]=arr[i];
+               res++;
+               maxLen[i]=res+1;
+           } 
+            else{
+                int ii=0;
+                int j=res;
+                while(ii<j){//二分查找大于arr[i]的第一个元素
+                  int mid=(ii+j)/2;
+                  if(arr[i]>tail[mid])ii=mid+1;
+                    else j=mid;
+                }
+                tail[j]=arr[i];
+                maxLen[i]=j+1;
+            }
+            
+        }
+        int k=res;
+        int [] res2 =new int [res+1];//这个循环从尾部到头部，maxlen相同时，只找相同中，下标最大，这样字典序最小
+        for(int i=len-1;k>=0;i--){
+            if(maxLen[i]==k+1){
+                res2[k]=arr[i];
+                k--;
+            }
+        }
+        
+        // write code here
+        return res2;
+    }
+}
+```
+
