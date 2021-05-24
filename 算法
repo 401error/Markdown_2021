@@ -136,3 +136,27 @@ public class Solution {
 }
 ```
 
+
+
+
+
+数组的原地算法
+
+* 删除相同的元素，快慢指针，慢指针指向需要填元素的位置，快指针跳过重复的，或者跳过指定元素。
+
+```java
+           int fast=0;
+            int low =0;
+        while(fast<num.length){
+           while(fast>0&&num[fast]==num[fast-1]){
+               fast++;
+               }
+           num[low]=num[fast];
+           
+           low++;
+           fast++;
+       }
+       return low;
+```
+
+* 一维数组的原地算法多来自于此
