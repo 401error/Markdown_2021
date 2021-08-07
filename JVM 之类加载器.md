@@ -40,7 +40,7 @@ Class<A> b = A.class //b就是类A的模板，类A的类信息
 
 
 
-![类加载器2](C:\Users\ZHW\Desktop\笔记\IMG\类加载器2.png)
+![类加载器2](C:\Users\ZHW\Desktop\Markdown_2021\IMG\类加载器2.png)
 
 ## 双亲委派的原因
 
