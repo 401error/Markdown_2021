@@ -1,6 +1,6 @@
 ### 锁的分类
 
-![img](C:\Users\ZHW\Desktop\Markdown_2021\IMG\watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2F4aWFvYm9nZQ==,size_16,color_FFFFFF,t_70)
+![img](..\IMG\watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2F4aWFvYm9nZQ==,size_16,color_FFFFFF,t_70)
 
 ### JVM锁优化
 

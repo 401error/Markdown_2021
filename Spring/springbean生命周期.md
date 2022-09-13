@@ -31,9 +31,9 @@
 
   
 
-![img](C:\Users\ZHW\Desktop\笔记\IMG\181453414212066.png)
+![img](..\IMG\181453414212066.png)
 
-<img src="C:\Users\ZHW\Desktop\笔记\IMG\181454040628981.png" alt="img"  />
+<img src="..\IMG\181454040628981.png" alt="img"  />
 
 
 
